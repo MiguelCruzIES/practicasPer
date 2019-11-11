@@ -5,7 +5,7 @@
   <div formGroupName="nombrecompleto">
    <!--    [ngClass]="{'has-danger': !forma.get('nombre').valid}
     --> 
-    <div class="form-group row ">
+    <div class="form-group row " >
       <label class="col-2 col-form-label">Nombre</label>
       <div class="col-8">
 
@@ -50,6 +50,58 @@
     </div>
   </div>
 
+  <div class="form-group row">
+      <label class="col-2 col-form-label">Usuario</label>
+      <div class="col-md-8">
+  
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre de usuario"
+               formControlName="username">
+      </div>
+
+    </div><div class="form-group row">
+        <label class="col-2 col-form-label">Contraseña</label>
+        <div class="col-md-8">
+    
+          <input class="form-control"
+                 type="password"
+                 placeholder="Contraseña"
+                 formControlName="password">
+        </div>
+      </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Confirmar contraseña</label>
+        <div class="col-md-8">
+    
+          <input class="form-control"
+                 type="password"
+                 placeholder="Repetir contraseña"
+                 formControlName="password1">
+        </div>
+      </div>
+    
+  
+  
+  
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pasatiempos</label>
+    <div class="col-md-8" formArrayName="pasatiempos">
+
+      <input  *ngFor="let pasatiempo of forma.controls['pasatiempos'].controls; let i= index"
+              [formControlName]="i"
+              type="text"
+              class="form-control" >
+    </div>
+
+    <button (click)="agregarPasatiempo()"
+            type="button" 
+            class="btn btn-primary"> 
+    nuevo </button>
+
+  </div>
+
 
 
   <div class="form-group row">
@@ -61,4 +113,6 @@
     </div>
   </div>
     {{forma.valid}}
+    <br>
+    {{forma.status}}
 </form>
